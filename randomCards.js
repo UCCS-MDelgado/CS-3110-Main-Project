@@ -18,6 +18,25 @@ function drawNewHand(deck, hand, cardNum) {
     }
 }
 
+function shuffleHand(deck, hand, cardNum) {
+    let newDeck = deck.concat(hand)
+
+    hand = []
+
+    deck = newDeck
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+
+    drawNewHand(deck, hand, cardNum)
+    
+    console.log("Deck after shuffle")
+    console.log(deck)
+
+    console.log("Hand after shuffle")
+    console.log(hand)
+}
+
 let deckArray = Array.from({ length: DECK_SIZE }, () => Math.floor(Math.random() * DECK_SIZE));
 
 console.log("Initial Deck")
