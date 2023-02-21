@@ -6,13 +6,19 @@ function drawCards(deck, hand, cardNum) {
         hand.push(deck.shift())
     }
 
-    hand = hand.sort(function (a, b) {  return a - b;  });
-    
+    hand = hand.sort(function (a, b) { return a - b; });
+
     console.log("Deck")
     console.log(deck)
 
     console.log("Hand")
     console.log(hand)
+}
+
+function shuffleDeck(deck) {
+    let shuffledArray = deck.sort((a, b) => 0.5 - Math.random());
+
+    console.log(shuffledArray)
 }
 
 function shuffleHand(deck, hand, cardNum) {
@@ -21,16 +27,16 @@ function shuffleHand(deck, hand, cardNum) {
     hand = []
 
     deck = newDeck
-    .map(value => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value)
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value)
 
     drawCards(deck, hand, cardNum)
 }
 
 let nums = []
 
-for (let i = 0; i < DECK_SIZE; i++){
+for (let i = 0; i < DECK_SIZE; i++) {
     nums.push(i)
 }
 let deckArray = [],
@@ -38,9 +44,9 @@ let deckArray = [],
     j = 0;
 
 while (i--) {
-    j = Math.floor(Math.random() * (i+1));
+    j = Math.floor(Math.random() * (i + 1));
     deckArray.push(nums[j]);
-    nums.splice(j,1);
+    nums.splice(j, 1);
 }
 
 console.log("Initial Deck")
