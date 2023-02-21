@@ -26,13 +26,23 @@ function shuffleHand(deck, hand, cardNum) {
     drawCards(deck, hand, cardNum)
 }
 
+function moveIntoPlay(field, hand, num) {
+    field.push(num)
+
+    const index = hand.indexOf(num);
+    if (index > -1) { 
+        hand.splice(index, 1); 
+    }
+}
+
+let deckArray = [], handArray = [], playfield = []
+
 let nums = []
 
 for (let i = 1; i <= DECK_SIZE; i++) {
     nums.push(i)
 }
-let deckArray = [],
-    i = nums.length,
+let i = nums.length,
     j = 0;
 
 while (i--) {
@@ -43,7 +53,5 @@ while (i--) {
 
 console.log("Initial Deck")
 console.log(deckArray)
-
-let handArray = []
 
 drawCards(deckArray, handArray, INITIAL_HAND_SIZE)
