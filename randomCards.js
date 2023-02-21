@@ -5,6 +5,8 @@ function drawCards(deck, hand, cardNum) {
     for (let i = 0; i < cardNum; i++) {
         hand.push(deck.shift())
     }
+
+    hand = hand.sort(function (a, b) {  return a - b;  });
     
     console.log("Deck")
     console.log(deck)
