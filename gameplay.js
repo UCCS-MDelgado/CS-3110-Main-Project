@@ -1,10 +1,10 @@
-import { drawCards } from "cardFunctions.js"
-import { shuffleDeck } from "cardFunctions.js"
-import { shuffleHand } from "cardFunctions.js"
-import { moveIntoPlay } from "cardFunctions.js"
-import { discardFromPlay } from "cardFunctions.js"
-import { discardToHand } from "cardFunctions.js"
-import { discardToDeck } from "cardFunctions.js"
+import { drawCards } from "/cardFunctions.js"
+import { shuffleDeck } from "/cardFunctions.js"
+import { shuffleHand } from "/cardFunctions.js"
+import { moveIntoPlay } from "/cardFunctions.js"
+import { discardFromPlay } from "/cardFunctions.js"
+import { discardToHand } from "/cardFunctions.js"
+import { discardToDeck } from "/cardFunctions.js"
 
 let DECK_SIZE = 60
 let INITIAL_HAND_SIZE = 5
