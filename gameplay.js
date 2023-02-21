@@ -98,8 +98,5 @@ while (i--) {
     nums.splice(j, 1);
 }
 
-console.log("Initial Deck")
-console.log(deckArray)
-
 addCardToHand(deckArray, handArray, INITIAL_HAND_SIZE)
 
