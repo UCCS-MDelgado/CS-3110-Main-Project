@@ -42,7 +42,17 @@ function discardFromPlay(array, num, discard) {
     if (index > -1) {
         array.splice(index, 1);
     }
+}
 
+function discardToHand(hand, discard, num) {
+    hand.push(num)
+
+    const index = discard.indexOf(num);
+    if (index > -1) {
+        discard.splice(index, 1);
+    }
+
+    hand = hand.sort(function (a, b) { return a - b; });
 }
 
 let deckArray = [], handArray = [], playField = [], discardArray = []
