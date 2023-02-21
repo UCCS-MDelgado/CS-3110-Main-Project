@@ -36,7 +36,7 @@ function shuffleHand(deck, hand, cardNum) {
 
 let nums = []
 
-for (let i = 0; i < DECK_SIZE; i++) {
+for (let i = 1; i <= DECK_SIZE; i++) {
     nums.push(i)
 }
 let deckArray = [],
