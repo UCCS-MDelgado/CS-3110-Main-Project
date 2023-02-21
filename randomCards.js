@@ -26,7 +26,20 @@ function shuffleHand(deck, hand, cardNum) {
     drawCards(deck, hand, cardNum)
 }
 
-let deckArray = Array.from({ length: DECK_SIZE }, () => Math.floor(Math.random() * DECK_SIZE));
+let nums = []
+
+for (let i = 0; i < DECK_SIZE; i++){
+    nums.push(i)
+}
+let deckArray = [],
+    i = nums.length,
+    j = 0;
+
+while (i--) {
+    j = Math.floor(Math.random() * (i+1));
+    deckArray.push(nums[j]);
+    nums.splice(j,1);
+}
 
 console.log("Initial Deck")
 console.log(deckArray)
