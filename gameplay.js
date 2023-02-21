@@ -29,3 +29,13 @@ console.log("Initial Deck")
 console.log(deckArray)
 
 drawCards(deckArray, handArray, INITIAL_HAND_SIZE)
+
+let handArrayNum = handArray.length
+
+for (let i = 0; i < handArrayNum; i++){
+    const para = document.createElement("div");
+    para.className = 'Card'
+
+    para.innerHTML = handArray.shift()
+    document.getElementById("Hand").appendChild(para);
+}
