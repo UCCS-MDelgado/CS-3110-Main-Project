@@ -6,10 +6,10 @@ function drawCards(deck, hand, cardNum) {
         hand.push(deck.shift())
     }
     
-    console.log("Deck after draw")
+    console.log("Deck")
     console.log(deck)
 
-    console.log("Hand after draw")
+    console.log("Hand")
     console.log(hand)
 }
 
@@ -24,12 +24,6 @@ function shuffleHand(deck, hand, cardNum) {
     .map(({ value }) => value)
 
     drawCards(deck, hand, cardNum)
-    
-    console.log("Deck after shuffle")
-    console.log(deck)
-
-    console.log("Hand after shuffle")
-    console.log(hand)
 }
 
 let deckArray = Array.from({ length: DECK_SIZE }, () => Math.floor(Math.random() * DECK_SIZE));
