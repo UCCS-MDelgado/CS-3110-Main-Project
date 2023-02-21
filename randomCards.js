@@ -1,21 +1,16 @@
 let DECK_SIZE = 60
 let INITIAL_HAND_SIZE = 5
 
-function drawCard(deck, hand) {
-    let newCard = deck.shift()
-    hand.push(newCard)
-
+function drawCards(deck, hand, cardNum) {
+    for (let i = 0; i < cardNum; i++) {
+        hand.push(deck.shift())
+    }
+    
     console.log("Deck after draw")
     console.log(deck)
 
     console.log("Hand after draw")
     console.log(hand)
-}
-
-function drawNewHand(deck, hand, cardNum) {
-    for (let i = 0; i < cardNum; i++) {
-        hand.push(deck.shift())
-    }
 }
 
 function shuffleHand(deck, hand, cardNum) {
@@ -28,7 +23,7 @@ function shuffleHand(deck, hand, cardNum) {
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value)
 
-    drawNewHand(deck, hand, cardNum)
+    drawCards(deck, hand, cardNum)
     
     console.log("Deck after shuffle")
     console.log(deck)
@@ -44,10 +39,4 @@ console.log(deckArray)
 
 let handArray = []
 
-drawNewHand(deckArray, handArray, INITIAL_HAND_SIZE)
-
-console.log("Cards in Hand")
-console.log(handArray)
-
-console.log("Cards Left in Deck")
-console.log(deckArray)
+drawCards(deckArray, handArray, INITIAL_HAND_SIZE)
