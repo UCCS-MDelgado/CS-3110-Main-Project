@@ -7,18 +7,10 @@ function drawCards(deck, hand, cardNum) {
     }
 
     hand = hand.sort(function (a, b) { return a - b; });
-
-    console.log("Deck")
-    console.log(deck)
-
-    console.log("Hand")
-    console.log(hand)
 }
 
 function shuffleDeck(deck) {
-    let shuffledArray = deck.sort((a, b) => 0.5 - Math.random());
-
-    console.log(shuffledArray)
+    deck = deck.sort((a, b) => 0.5 - Math.random());
 }
 
 function shuffleHand(deck, hand, cardNum) {
