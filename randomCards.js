@@ -55,6 +55,17 @@ function discardToHand(hand, discard, num) {
     hand = hand.sort(function (a, b) { return a - b; });
 }
 
+function discardToDeck(deck, discard, num){
+    deck.push(num)
+
+    const index = discard.indexOf(num);
+    if (index > -1) {
+        discard.splice(index, 1);
+    }
+
+    shuffleDeck(deck)
+}
+
 let deckArray = [], handArray = [], playField = [], discardArray = []
 
 let nums = []
