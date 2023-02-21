@@ -30,12 +30,22 @@ function moveIntoPlay(field, hand, num) {
     field.push(num)
 
     const index = hand.indexOf(num);
-    if (index > -1) { 
-        hand.splice(index, 1); 
+    if (index > -1) {
+        hand.splice(index, 1);
     }
 }
 
-let deckArray = [], handArray = [], playfield = []
+function discardFromPlay(array, num, discard) {
+    discard.push(num)
+
+    const index = array.indexOf(num);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+
+}
+
+let deckArray = [], handArray = [], playField = [], discardArray = []
 
 let nums = []
 
