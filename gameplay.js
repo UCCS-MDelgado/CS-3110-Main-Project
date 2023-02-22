@@ -52,7 +52,7 @@ function discardToHand(hand, discard, num) {
     hand = hand.sort(function (a, b) { return a - b; });
 }
 
-function discardToDeck(deck, discard, num){
+function discardToDeck(deck, discard, num) {
     deck.push(num)
 
     const index = discard.indexOf(num);
@@ -63,17 +63,17 @@ function discardToDeck(deck, discard, num){
     shuffleDeck(deck)
 }
 
-function addCardToHand(deck, hand, cardNum){
+function addCardToHand(deck, hand, cardNum) {
     drawCards(deck, hand, cardNum)
 
     let handArrayNum = handArray.length
 
     document.getElementById('Hand').innerHTML = '';
 
-    for (let i = 0; i < handArrayNum; i++){
+    for (let i = 0; i < handArrayNum; i++) {
         const para = document.createElement("div");
-        para.className = 'Card'
-    
+        para.className = 'Card-ID'
+
         para.innerHTML = handArray[i]
         document.getElementById('Hand').appendChild(para);
     }
