@@ -1,0 +1,18 @@
+.Card-ID:hover {
+    margin-top: -5%;
+}
+
+#Hand {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+}
+
+.Card-ID {
+    flex: 1;
+    border: 2px solid black;
+    text-align: center;
+    height: 140px;
+    width: 100px;
+    margin: .5em;
+}
