@@ -1,6 +1,6 @@
 # CS-3110-Main-Project
 
-Simple overview of use/purpose.
+A basic online card game
 
 ## Description
 
