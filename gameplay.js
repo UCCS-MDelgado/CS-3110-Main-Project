@@ -8,8 +8,7 @@ let nums = []
 for (let i = 1; i <= DECK_SIZE; i++) {
     nums.push(i)
 }
-let i = nums.length,
-    j = 0;
+let i = nums.length, j = 0;
 
 while (i--) {
     j = Math.floor(Math.random() * (i + 1));
