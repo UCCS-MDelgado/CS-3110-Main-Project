@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Game Board</title>
+    <title>Card Game</title>
 
     <link rel="stylesheet" href="styles.css">
 
@@ -11,11 +11,42 @@
 
 <body>
 
+    <button onclick="addCardToHand(deckArray, handArray, 1)" id="Draw-One">Draw Card</button>
+
     <div id="Hand"></div>
 
-    <script src="gameplay.js"></script>
+    <div id="Board">
+        <div class="Row" id="Top-Row">
+            <div class="Slot" id="Slot-A1"></div>
+            <div class="Slot" id="Slot-A2"></div>
+            <div class="Slot" id="Slot-A3"></div>
+            <div class="Slot" id="Slot-A4"></div>
+            <div class="Slot" id="Slot-A5"></div>
+        </div>
+        <div class="Row" id="Top-Center-Row">
+            <div class="Slot" id="Slot-B1"></div>
+            <div class="Slot" id="Slot-B2"></div>
+            <div class="Slot" id="Slot-B3"></div>
+            <div class="Slot" id="Slot-B4"></div>
+            <div class="Slot" id="Slot-B5"></div>
+        </div>
+        <div class="Row" id="Bottom-Center-Row">
+            <div class="Slot" id="Slot-C1"></div>
+            <div class="Slot" id="Slot-C2"></div>
+            <div class="Slot" id="Slot-C3"></div>
+            <div class="Slot" id="Slot-C4"></div>
+            <div class="Slot" id="Slot-C5"></div>
+        </div>
+        <div class="Row" id="Bottom-Row">
+            <div class="Slot" id="Slot-D1">Start Here</div>
+            <div class="Slot" id="Slot-D2"></div>
+            <div class="Slot" id="Slot-D3"></div>
+            <div class="Slot" id="Slot-D4"></div>
+            <div class="Slot" id="Slot-D5"></div>
+        </div>
+    </div>
 
-    <button onclick="addCardToHand(deckArray, handArray, 1)" id="Draw-One">Draw Card</button>
+    <script src="gameplay.js"></script>
 
 </body>
 
