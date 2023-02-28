@@ -1,3 +1,21 @@
+function initializeGame(deck, deckSize, hand, handSize) {
+    
+let nums = []
+
+for (let i = 1; i <= deckSize; i++) {
+    nums.push(i)
+}
+let i = nums.length, j = 0;
+
+while (i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    deck.push(nums[j]);
+    nums.splice(j, 1);
+}
+
+addCardToHand(deck, hand, handSize)
+}
+
 function trackDeckSize(deck) {
     document.getElementById('Deck').innerHTML = '';
 
