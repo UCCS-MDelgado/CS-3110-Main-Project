@@ -1,3 +1,15 @@
+function trackDeckSize(deck) {
+    document.getElementById('Deck').innerHTML = '';
+
+    const para = document.createElement("Count");
+    para.id = 'Num'
+
+    para.innerHTML = deck.length
+    document.getElementById('Deck').appendChild(para);
+
+    return deck.length
+}
+
 function drawCards(deck, hand, cardNum) {
     for (let i = 0; i < cardNum; i++) {
         hand.push(deck.shift())
@@ -77,4 +89,6 @@ function addCardToHand(deck, hand, cardNum) {
         para.innerHTML = hand[i]
         document.getElementById('Hand').appendChild(para);
     }
+
+    trackDeckSize(deck)
 }

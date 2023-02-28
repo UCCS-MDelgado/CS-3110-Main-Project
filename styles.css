@@ -51,3 +51,24 @@
 .Card-ID:hover {
     margin-top: -5%;
 }
+
+#Deck {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    border: 2px solid black;
+    text-align: center;
+    height: 140px;
+    width: 100px;
+    margin: .5em;
+}
+
+#Num {
+    border: 2px solid rgb(73, 169, 202);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
