@@ -1,19 +1,19 @@
 function initializeGame(deck, deckSize, hand, handSize) {
-    
-let nums = []
 
-for (let i = 1; i <= deckSize; i++) {
-    nums.push(i)
-}
-let i = nums.length, j = 0;
+    let nums = []
 
-while (i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    deck.push(nums[j]);
-    nums.splice(j, 1);
-}
+    for (let i = 1; i <= deckSize; i++) {
+        nums.push(i)
+    }
+    let i = nums.length, j = 0;
 
-addCardToHand(deck, hand, handSize)
+    while (i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        deck.push(nums[j]);
+        nums.splice(j, 1);
+    }
+
+    addCardToHand(deck, hand, handSize)
 }
 
 function trackDeckSize(deck) {
@@ -93,9 +93,7 @@ function discardToDeck(deck, discard, num) {
     shuffleDeck(deck)
 }
 
-function addCardToHand(deck, hand, cardNum) {
-    drawCards(deck, hand, cardNum)
-
+function createHand(hand) {
     let handArrayNum = hand.length
 
     document.getElementById('Hand').innerHTML = '';
@@ -104,9 +102,25 @@ function addCardToHand(deck, hand, cardNum) {
         const para = document.createElement("div");
         para.className = 'Card-ID'
 
-        para.innerHTML = hand[i]
+        let cardID = hand[i]
+        para.innerHTML = cardID
+
+        para.addEventListener("click", function(){ discardCardFromHand(hand, cardID, discardArray) })
+
         document.getElementById('Hand').appendChild(para);
     }
+}
+
+function addCardToHand(deck, hand, cardNum) {
+    drawCards(deck, hand, cardNum)
+
+    createHand(hand)
 
     trackDeckSize(deck)
+}
+
+function discardCardFromHand(hand, num, discard) {
+    discardFromPlay(hand, num, discard)
+
+    createHand(hand)
 }
