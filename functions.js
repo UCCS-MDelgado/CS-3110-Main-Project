@@ -32,9 +32,8 @@ function shuffleHand(cardNum) {
     handArray = []
 
     deckArray = newDeck
-        .map(value => ({ value, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value)
+
+    shuffleDeck()
 
     drawCards(cardNum)
 
@@ -93,13 +92,13 @@ function createHand() {
         let cardID = handArray[i]
         para.innerHTML = cardID
 
-        para.addEventListener("click", function(){ discardCardFromHand(cardID) })
+        para.addEventListener("click", function () { discardCardFromHand(cardID) })
 
         document.getElementById('Hand').appendChild(para);
     }
 }
 
-function discardCardFromHand(num) {
+function playCard(num) {
     discardFromPlay(handArray, num)
 
     createHand()
