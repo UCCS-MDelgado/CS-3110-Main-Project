@@ -1,69 +1,57 @@
-function initializeGame(deck, deckSize, hand, handSize) {
-
-    let nums = []
-
-    for (let i = 1; i <= deckSize; i++) {
-        nums.push(i)
-    }
-    let i = nums.length, j = 0;
-
-    while (i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        deck.push(nums[j]);
-        nums.splice(j, 1);
-    }
-
-    addCardToHand(deck, hand, handSize)
-}
-
-function trackDeckSize(deck) {
+function trackDeckSize() {
     document.getElementById('Deck').innerHTML = '';
 
     const para = document.createElement("Count");
     para.id = 'Num'
 
-    para.innerHTML = deck.length
+    para.innerHTML = deckArray.length
     document.getElementById('Deck').appendChild(para);
 
-    return deck.length
+    return deckArray.length
 }
 
-function drawCards(deck, hand, cardNum) {
+function drawCards(cardNum) {
     for (let i = 0; i < cardNum; i++) {
-        hand.push(deck.shift())
+        handArray.push(deckArray.shift())
     }
 
-    hand = hand.sort(function (a, b) { return a - b; });
+    handArray = handArray.sort(function (a, b) { return a - b; });
+
+    createHand()
+
+    trackDeckSize()
 }
 
-function shuffleDeck(deck) {
-    deck = deck.sort((a, b) => 0.5 - Math.random());
+function shuffleDeck() {
+    deckArray = deckArray.sort((a, b) => 0.5 - Math.random());
 }
 
-function shuffleHand(deck, hand, cardNum) {
-    let newDeck = deck.concat(hand)
+function shuffleHand(cardNum) {
+    let newDeck = deckArray.concat(handArray)
 
-    hand = []
+    handArray = []
 
-    deck = newDeck
+    deckArray = newDeck
         .map(value => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
 
-    drawCards(deck, hand, cardNum)
+    drawCards(cardNum)
+
+    createHand()
 }
 
-function moveIntoPlay(field, hand, num) {
-    field.push(num)
+function moveIntoPlay(num) {
+    playField.push(num)
 
-    const index = hand.indexOf(num);
+    const index = handArray.indexOf(num);
     if (index > -1) {
-        hand.splice(index, 1);
+        handArray.splice(index, 1);
     }
 }
 
-function discardFromPlay(array, num, discard) {
-    discard.push(num)
+function discardFromPlay(array, num) {
+    discardArray.push(num)
 
     const index = array.indexOf(num);
     if (index > -1) {
@@ -71,30 +59,30 @@ function discardFromPlay(array, num, discard) {
     }
 }
 
-function discardToHand(hand, discard, num) {
-    hand.push(num)
+function discardToHand(num) {
+    handArray.push(num)
 
-    const index = discard.indexOf(num);
+    const index = discardArray.indexOf(num);
     if (index > -1) {
-        discard.splice(index, 1);
+        discardArray.splice(index, 1);
     }
 
-    hand = hand.sort(function (a, b) { return a - b; });
+    handArray = handArray.sort(function (a, b) { return a - b; });
 }
 
-function discardToDeck(deck, discard, num) {
-    deck.push(num)
+function discardToDeck(num) {
+    deckArray.push(num)
 
-    const index = discard.indexOf(num);
+    const index = discardArray.indexOf(num);
     if (index > -1) {
-        discard.splice(index, 1);
+        discardArray.splice(index, 1);
     }
 
-    shuffleDeck(deck)
+    shuffleDeck()
 }
 
-function createHand(hand) {
-    let handArrayNum = hand.length
+function createHand() {
+    let handArrayNum = handArray.length
 
     document.getElementById('Hand').innerHTML = '';
 
@@ -102,25 +90,17 @@ function createHand(hand) {
         const para = document.createElement("div");
         para.className = 'Card-ID'
 
-        let cardID = hand[i]
+        let cardID = handArray[i]
         para.innerHTML = cardID
 
-        para.addEventListener("click", function(){ discardCardFromHand(hand, cardID, discardArray) })
+        para.addEventListener("click", function(){ discardCardFromHand(cardID) })
 
         document.getElementById('Hand').appendChild(para);
     }
 }
 
-function addCardToHand(deck, hand, cardNum) {
-    drawCards(deck, hand, cardNum)
+function discardCardFromHand(num) {
+    discardFromPlay(handArray, num)
 
-    createHand(hand)
-
-    trackDeckSize(deck)
-}
-
-function discardCardFromHand(hand, num, discard) {
-    discardFromPlay(hand, num, discard)
-
-    createHand(hand)
+    createHand()
 }
