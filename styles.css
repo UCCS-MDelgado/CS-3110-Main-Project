@@ -39,7 +39,7 @@
     bottom: 0px;
 }
 
-.Card-ID {
+.Playing-Card {
     flex: 1;
     border: 2px solid black;
     text-align: center;
@@ -48,8 +48,17 @@
     margin: .5em;
 }
 
-.Card-ID:hover {
+.Playing-Card:hover {
     margin-top: -5%;
+}
+
+.Card-Value {
+    border: 2px solid black;
+    text-align: center;
+}
+
+.Card-Effect{
+    font-size: 0.8em;
 }
 
 #Stacks {

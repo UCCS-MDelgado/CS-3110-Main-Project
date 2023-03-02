@@ -1,7 +1,7 @@
 let DECK_SIZE = 60
 let INITIAL_HAND_SIZE = 5
 
-let deckArray = [], handArray = [], discardArray = [], playField = [] 
+let deckArray = [], handArray = [], discardArray = [], playField = [], effectArray = []
 
 let nums = []
 
@@ -15,6 +15,8 @@ while (i--) {
     deckArray.push(nums[j]);
     nums.splice(j, 1);
 }
+
+addEffect(effectArray)
 
 drawCards(INITIAL_HAND_SIZE)
 

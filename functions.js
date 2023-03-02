@@ -80,21 +80,59 @@ function discardToDeck(num) {
     shuffleDeck()
 }
 
+function addEffect(array) {
+    for (let i = 0; i < DECK_SIZE; i++) {
+        let effect = effects[Math.floor(Math.random() * effects.length)]
+
+        if (Math.floor(Math.random() * 2) == 0) {
+            array.push([i, effect, true])
+        }
+        else {
+            array.push([i, effect, false])
+        }
+    }
+}
+
+function createCard(num) {
+    const newCard = document.createElement("div");
+    newCard.className = "Playing-Card"
+
+    newCard.addEventListener("click", function () { playCard(num) })
+
+    const trim = document.createElement("div");
+    trim.className = "Trim"
+    const content = document.createElement("div");
+    content.className = "Content"
+
+    newCard.appendChild(trim)
+    trim.appendChild(content)
+
+    const cardValue = document.createElement("div");
+    cardValue.className = "Card-Value"
+    const cardEffect = document.createElement("div")
+    cardEffect.className = "Card-Effect"
+
+    cardValue.innerHTML = num
+
+    for (let i = 0; i < DECK_SIZE; i++){
+        if ((effectArray[i][0] == num) && (effectArray[i][2])){
+            cardEffect.innerHTML = effectArray[i][1]
+        }
+    }
+
+    content.appendChild(cardValue)
+    content.appendChild(cardEffect)
+
+    document.getElementById('Hand').appendChild(newCard)
+}
+
 function createHand() {
     let handArrayNum = handArray.length
 
     document.getElementById('Hand').innerHTML = '';
 
     for (let i = 0; i < handArrayNum; i++) {
-        const cardValue = document.createElement("div");
-        cardValue.className = 'Card-ID'
-
-        let cardID = handArray[i]
-        cardValue.innerHTML = cardID
-
-        cardValue.addEventListener("click", function () { playCard(cardID) })
-
-        document.getElementById('Hand').appendChild(cardValue);
+        createCard(handArray[i])
     }
 }
 
