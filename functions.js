@@ -7,12 +7,20 @@ function trackDeckSize() {
     deckCount.innerHTML = deckArray.length
     document.getElementById('Inner').appendChild(deckCount);
 
+    if (deckArray.length == 0) {
+        document.getElementById("Inner").style.backgroundColor = "white"
+    }
+
     return deckArray.length
 }
 
 function checkIfEnoughCards(num) {
     let amount = deckArray.length
-    
+
+    if (amount == 0) {
+        document.getElementById("Overlay").style.display = "block";
+    }
+
     if (amount >= num) {
         return num
     }
