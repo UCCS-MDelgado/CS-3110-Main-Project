@@ -37,11 +37,17 @@ function shuffleUntilFive() {
 
 function discardHand() {
     handSize = handArray.length
+
+    fillDiscardUsingIndex(handSize - 1)
+
+    let cardDraws = checkIfEnoughCards(7)
+
     for (let i = 0; i < handSize; i++) {
-        discardArray.push(handArray.shift())
+        let discarded = handArray[0]
+        discardFromPlay(handArray, discarded)
     }
 
-    drawCards(7)
+    drawCards(cardDraws)
 }
 
 function bothShuffleToThree() {

@@ -10,8 +10,22 @@ function trackDeckSize() {
     return deckArray.length
 }
 
+function checkIfEnoughCards(num) {
+    let amount = deckArray.length
+    
+    if (amount >= num) {
+        return num
+    }
+    else {
+        let cardsLeft = num - (num - amount)
+        return cardsLeft
+    }
+}
+
 function drawCards(cardNum) {
-    for (let i = 0; i < cardNum; i++) {
+    let cardDraws = checkIfEnoughCards(cardNum)
+
+    for (let i = 0; i < cardDraws; i++) {
         handArray.push(deckArray.shift())
     }
 
@@ -32,10 +46,11 @@ function shuffleHand(cardNum) {
     handArray = []
 
     deckArray = newDeck
+    let cardDraws = checkIfEnoughCards(cardNum)
 
     shuffleDeck()
 
-    drawCards(cardNum)
+    drawCards(cardDraws)
 
     createHand()
 }
@@ -114,8 +129,8 @@ function createCard(num) {
 
     cardValue.innerHTML = num
 
-    for (let i = 0; i < DECK_SIZE; i++){
-        if ((effectArray[i][0] == num) && (effectArray[i][2])){
+    for (let i = 0; i < DECK_SIZE; i++) {
+        if ((effectArray[i][0] == num) && (effectArray[i][2])) {
             cardEffect.innerHTML = effectArray[i][1]
         }
     }
@@ -136,8 +151,31 @@ function createHand() {
     }
 }
 
-function playCard(num) {
-    discardFromPlay(handArray, num)
+function fillDiscardUsingIndex(index) {
+    const list = document.getElementsByClassName("Card-Value")
 
+    discarded = list[index].innerHTML
+
+    fillDiscard(discarded)
+}
+
+function fillDiscard(num) {
+    const list = document.getElementsByClassName("Card-Value")
+
+    let index = 0
+
+    for (let i = 0; i < handArray.length; i++) {
+        if (list[i].innerHTML == num) {
+            index = i
+        }
+    }
+
+    document.getElementById("Discard").innerHTML = ''
+    document.getElementById("Discard").appendChild(document.getElementsByClassName("Content")[index])
+}
+
+function playCard(num) {
+    fillDiscard(num)
+    discardFromPlay(handArray, num)
     createHand()
 }
