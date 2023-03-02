@@ -1,11 +1,11 @@
 function trackDeckSize() {
-    document.getElementById('Deck').innerHTML = '';
+    document.getElementById('Inner').innerHTML = '';
 
-    const para = document.createElement("Count");
-    para.id = 'Num'
+    const deckCount = document.createElement("Count");
+    deckCount.id = 'Num'
 
-    para.innerHTML = deckArray.length
-    document.getElementById('Deck').appendChild(para);
+    deckCount.innerHTML = deckArray.length
+    document.getElementById('Inner').appendChild(deckCount);
 
     return deckArray.length
 }
@@ -86,15 +86,15 @@ function createHand() {
     document.getElementById('Hand').innerHTML = '';
 
     for (let i = 0; i < handArrayNum; i++) {
-        const para = document.createElement("div");
-        para.className = 'Card-ID'
+        const cardValue = document.createElement("div");
+        cardValue.className = 'Card-ID'
 
         let cardID = handArray[i]
-        para.innerHTML = cardID
+        cardValue.innerHTML = cardID
 
-        para.addEventListener("click", function () { discardCardFromHand(cardID) })
+        cardValue.addEventListener("click", function () { playCard(cardID) })
 
-        document.getElementById('Hand').appendChild(para);
+        document.getElementById('Hand').appendChild(cardValue);
     }
 }
 

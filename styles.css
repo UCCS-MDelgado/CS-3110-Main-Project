@@ -52,11 +52,13 @@
     margin-top: -5%;
 }
 
-#Deck {
+#Stacks {
     position: fixed;
     bottom: 0;
     right: 0;
+}
 
+#Discard {
     border: 2px solid black;
     text-align: center;
     height: 140px;
@@ -64,8 +66,37 @@
     margin: .5em;
 }
 
+#Deck {
+    border: 2px solid black;
+    text-align: center;
+    height: 140px;
+    width: 100px;
+    margin: .5em;
+}
+
+#Inner {
+    background: #6ebcd6;
+
+    text-align: center;
+
+    height: 120px;
+    width: 80px;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+}
+
 #Num {
-    border: 2px solid rgb(73, 169, 202);
+    border-radius: 30%;
+    background: #e5ddddd2;
+
+    height: 20px;
+    width: 30px;
+
     position: absolute;
     top: 50%;
     left: 50%;
