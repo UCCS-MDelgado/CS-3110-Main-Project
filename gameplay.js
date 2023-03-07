@@ -30,6 +30,10 @@ let eleLen = ele.length
 let eleId = []
 let eleIdLen = 0
 
+let idIndex = []
+
+let temp = []
+
 let slots = []
 let row = []
 
@@ -40,10 +44,16 @@ for (let i = 0; i < eleLen; i++) {
 
     if ((i + 1) % 5 == 0) {
         row.push(slotID)
+        temp.push(slotID)
+
         slots.push(row)
+        idIndex.push(temp)
+
         row = []
+        temp = []
     }
     else {
         row.push(slotID)
+        temp.push(slotID)
     }
 }

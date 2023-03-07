@@ -122,8 +122,8 @@ function createCard(num) {
     newCard.id = num
 
     newCard.addEventListener("click", function () { playCard(num) })
-    newCard.addEventListener("mouseover", function() { highlightValid(num) })
-    newCard.addEventListener("mouseout", function() { noHighlight() })
+    newCard.addEventListener("mouseover", function () { highlightValid(num) })
+    newCard.addEventListener("mouseout", function () { noHighlight() })
 
     const trim = document.createElement("div");
     trim.className = "Trim"
@@ -171,7 +171,7 @@ function fillDiscardUsingIndex(index) {
 }
 
 function fillDiscard(num) {
-    const list = document.getElementsByClassName("Card-Value")
+    let list = document.getElementsByClassName("Card-Value")
 
     let index = 0
 
@@ -186,15 +186,27 @@ function fillDiscard(num) {
 }
 
 function playCard(num) {
+    setPlay = false
+
+    noHighlight()
+    highlightValid(num)
+
     cardType = num
+
     setPlay = true
 
-    highlightValid(num)
-    noHighlight()
+    let cardList = document.getElementsByClassName("Playing-Card")
+    let handArrayNum = handArray.length
 
-    fillDiscard(num)
+    for (let i = 0; i < handArrayNum; i++) {
+        cardList[i].style.borderColor = 'black'
+    }
+
+    document.getElementById(num).style.borderColor = 'rgba(98, 183, 248)'
+
+    /* fillDiscard(num)
     discardFromPlay(handArray, num)
     createHand()
 
-    setPlay = false 
+    setPlay = false */
 }
