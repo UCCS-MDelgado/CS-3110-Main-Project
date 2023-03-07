@@ -20,6 +20,30 @@ addEffect(effectArray)
 
 drawCards(INITIAL_HAND_SIZE)
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 4; i++) {
     playField.push(['', '', '', '', ''])
+}
+
+let ele = document.getElementsByClassName("Slot")
+let eleLen = ele.length
+
+let eleId = []
+let eleIdLen = 0
+
+let slots = []
+let row = []
+
+for (let i = 0; i < eleLen; i++) {
+    let slotID = ele[i].id
+    eleId.push(slotID)
+    eleIdLen = eleId.length
+
+    if ((i + 1) % 5 == 0) {
+        row.push(slotID)
+        slots.push(row)
+        row = []
+    }
+    else {
+        row.push(slotID)
+    }
 }

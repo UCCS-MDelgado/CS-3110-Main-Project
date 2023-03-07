@@ -119,8 +119,11 @@ function addEffect(array) {
 function createCard(num) {
     const newCard = document.createElement("div");
     newCard.className = "Playing-Card"
+    newCard.id = num
 
     newCard.addEventListener("click", function () { playCard(num) })
+    newCard.addEventListener("mouseover", function() { highlightValid(num) })
+    newCard.addEventListener("mouseout", function() { noHighlight() })
 
     const trim = document.createElement("div");
     trim.className = "Trim"
@@ -183,7 +186,15 @@ function fillDiscard(num) {
 }
 
 function playCard(num) {
+    cardType = num
+    setPlay = true
+
+    highlightValid(num)
+    noHighlight()
+
     fillDiscard(num)
     discardFromPlay(handArray, num)
     createHand()
+
+    setPlay = false 
 }

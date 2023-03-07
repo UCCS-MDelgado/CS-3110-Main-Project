@@ -8,6 +8,7 @@
 
     <script src="functions.js"></script>
     <script src="effects.js"></script>
+    <script src="gameBoard.js"></script>
 </head>
 
 <body>
@@ -22,39 +23,39 @@
 
     <div id="Board">
         <div class="Row" id="Top-Row">
-            <div class="Slot" id="Slot-A1"></div>
-            <div class="Slot" id="Slot-A2"></div>
-            <div class="Slot" id="Slot-A3"></div>
-            <div class="Slot" id="Slot-A4"></div>
-            <div class="Slot" id="Slot-A5"></div>
+            <div class="Slot" id="Slot-A1" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-A2" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-A3" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-A4" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-A5" onclick="getIntoPlay(this.id)"></div>
         </div>
         <div class="Row" id="Top-Center-Row">
-            <div class="Slot" id="Slot-B1"></div>
-            <div class="Slot" id="Slot-B2"></div>
-            <div class="Slot" id="Slot-B3"></div>
-            <div class="Slot" id="Slot-B4"></div>
-            <div class="Slot" id="Slot-B5"></div>
+            <div class="Slot" id="Slot-B1" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-B2" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-B3" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-B4" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-B5" onclick="getIntoPlay(this.id)"></div>
         </div>
         <div class="Row" id="Bottom-Center-Row">
-            <div class="Slot" id="Slot-C1"></div>
-            <div class="Slot" id="Slot-C2"></div>
-            <div class="Slot" id="Slot-C3"></div>
-            <div class="Slot" id="Slot-C4"></div>
-            <div class="Slot" id="Slot-C5"></div>
+            <div class="Slot" id="Slot-C1" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-C2" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-C3" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-C4" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-C5" onclick="getIntoPlay(this.id)"></div>
         </div>
         <div class="Row" id="Bottom-Row">
-            <div class="Slot" id="Slot-D1">Start Here</div>
-            <div class="Slot" id="Slot-D2"></div>
-            <div class="Slot" id="Slot-D3"></div>
-            <div class="Slot" id="Slot-D4"></div>
-            <div class="Slot" id="Slot-D5"></div>
+            <div class="Slot" id="Slot-D1" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-D2" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-D3" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-D4" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-D5" onclick="getIntoPlay(this.id)"></div>
         </div>
     </div>
 
     <div id="Stacks">
         <div id="Discard"></div>
 
-        <div id="Deck">
+        <div id="Deck" onclick="drawCards(1)">
             <div id="Inner"></div>
         </div>
     </div>

@@ -40,7 +40,7 @@ function discardHand() {
 
     fillDiscardUsingIndex(handSize - 1)
 
-    let cardDraws = checkIfEnoughCards(7)
+    let cardDraws = checkIfEnoughCards(6)
 
     for (let i = 0; i < handSize; i++) {
         let discarded = handArray[0]
