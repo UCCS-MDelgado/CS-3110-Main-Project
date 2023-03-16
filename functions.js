@@ -10,6 +10,9 @@ function trackDeckSize() {
     if (deckArray.length == 0) {
         document.getElementById("Inner").style.backgroundColor = "white"
     }
+    else {
+        document.getElementById("Inner").style.backgroundColor = "#6ebcd6"
+    }
 
     return deckArray.length
 }
@@ -105,7 +108,7 @@ function discardToDeck(num) {
 
 function addEffect(array) {
     for (let i = 0; i < DECK_SIZE; i++) {
-        let effect = effects[Math.floor(Math.random() * effects.length)]
+        let effect = effectText[Math.floor(Math.random() * effectText.length)]
 
         if (Math.floor(Math.random() * 2) == 0) {
             array.push([i, effect, true])
@@ -203,10 +206,4 @@ function playCard(num) {
     }
 
     document.getElementById(num).style.borderColor = 'rgba(98, 183, 248)'
-
-    /* fillDiscard(num)
-    discardFromPlay(handArray, num)
-    createHand()
-
-    setPlay = false */
 }

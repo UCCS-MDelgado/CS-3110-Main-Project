@@ -15,7 +15,9 @@ const SWAP_CARDS = "Select one card in your hand and one of your card's in play,
 const SHUFFLE_DISCARD_INTO_DECK = "Shuffle three cards in the discard pile into the deck."
 const DISCARD_TO_HAND = "Add one card from the discard pile into your hand."
 
-const effects = [DRAW_TWO, DRAW_UNTIL_FIVE, SHUFFLE_UNTIL_FIVE, DISCARD_HAND, BOTH_SHUFFLE_TO_THREE, SHUFFLE_TO_BOTTOM, DISCARD_CARD, DISCARD_TOP, HALVE_VALUE, DOUBLE_VALUE, SWAP_CARDS, SHUFFLE_DISCARD_INTO_DECK, DISCARD_TO_HAND]
+const effectText = [DRAW_TWO, DRAW_UNTIL_FIVE, SHUFFLE_UNTIL_FIVE, DISCARD_HAND, BOTH_SHUFFLE_TO_THREE, SHUFFLE_TO_BOTTOM, DISCARD_CARD, DISCARD_TOP, HALVE_VALUE, DOUBLE_VALUE, SWAP_CARDS, SHUFFLE_DISCARD_INTO_DECK, DISCARD_TO_HAND]
+
+const effects = [drawTwo, drawUntilFive, shuffleUntilFive, discardHand, bothShuffleToThree]
 
 function drawTwo() {
     drawCards(2)

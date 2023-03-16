@@ -10,13 +10,49 @@ function findIndex(board_id) {
     let idIndexOfIndexLen = idIndex[0].length
 
 
-    for (let i = 0; i < idIndexLen; i++){
-        for (let j = 0; j < idIndexOfIndexLen; j++){
-            if (idIndex[i][j] == board_id){
+    for (let i = 0; i < idIndexLen; i++) {
+        for (let j = 0; j < idIndexOfIndexLen; j++) {
+            if (idIndex[i][j] == board_id) {
                 return [i, j]
             }
         }
     }
+}
+
+function validMoves(num, row, col) {
+    let tileNum = playField[row][col]
+
+    let tileIndex = ''
+
+    if ((row - 1) < 0) {
+        if ((col + 1) > 4) {
+            document.getElementById("Overlay").style.display = "block";
+        }
+        else {
+            if (num > tileNum) {
+                tileIndex = slots[row][col + 1]
+            }
+
+            return tileIndex
+        }
+    }
+
+    if ((col + 1) > 4) {
+        if (num < tileNum) {
+            tileIndex = slots[row - 1][col]
+
+            return tileIndex
+        }
+    }
+
+    if (num > tileNum) {
+        tileIndex = slots[row][col + 1]
+    }
+    else if (num < tileNum) {
+        tileIndex = slots[row - 1][col]
+    }
+
+    return tileIndex
 }
 
 function validSlots(num) {
@@ -26,7 +62,31 @@ function validSlots(num) {
     if (playField[3][0] == '') {
         slotIndex = slots[3][0]
         validSlotArray.push(slotIndex)
+
+        return validSlotArray
     }
+
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 5; j++) {
+            if (playField[i][j] != '') {
+                console.log(playField[i][j])
+                validSlotArray.push(validMoves(num, i, j))
+            }
+        }
+    }
+
+    let validSlotArrayLen = validSlotArray.length
+    let tempArray = []
+
+    for (let i = 0; i < validSlotArrayLen; i++) {
+        if (document.getElementById(validSlotArray[i]).innerHTML.trim() == ""){
+            tempArray.push(validSlotArray[i])
+        }
+    }
+
+    validSlotArray = tempArray
+
+    console.log(validSlotArray)
 
     return validSlotArray
 }
@@ -60,6 +120,15 @@ function noHighlight() {
     }
 }
 
+function activateEffect(effect) {
+    let effectTextLen = effectText.length
+    for (let i = 0; i < effectTextLen; i++) {
+        if (effectText[i] == effect) {
+            effects[i]()
+        }
+    }
+}
+
 function getIntoPlay(board_id) {
     validArray = validSlots(cardType)
     let validArrayLen = validArray.length
@@ -70,8 +139,16 @@ function getIntoPlay(board_id) {
             if (setPlay) {
                 document.getElementById(board_id).innerHTML = cardType
 
-                fillDiscard(cardType)
+                let effect = document.getElementById(cardType).getElementsByClassName("Card-Effect")[0].innerHTML
+                console.log(effect)
+
                 discardFromPlay(handArray, cardType)
+
+                const index = discardArray.indexOf(cardType);
+                if (index > -1) {
+                    discardArray.splice(index, 1)
+                }
+
                 createHand()
 
                 let updateArray = findIndex(board_id)
@@ -81,8 +158,9 @@ function getIntoPlay(board_id) {
                 playField[row][col] = cardType
 
                 setPlay = false
-
                 noHighlight()
+
+                activateEffect(effect)
             }
         }
     }
