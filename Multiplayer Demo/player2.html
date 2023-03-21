@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Card Game</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="functions.js"></script>
+    <script src="effects.js"></script>
+    <script src="gameBoard.js"></script>
+</head>
+
+<body>
+    <div id="Overlay">
+        <div id="Game-Over-Screen">
+            Game Over
+        </div>
+        <button onclick="document.location='index.html'">Back to Home Page</button>
+    </div>
+
+    <div id="Hand"></div>
+
+    <div id="Board">
+        <div class="Row" id="Top-Row">
+            <div class="Slot" id="Slot-A1" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-A2" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-A3" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-A4" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-A5" onclick="getIntoPlay(this.id)"></div>
+        </div>
+        <div class="Row" id="Top-Center-Row">
+            <div class="Slot" id="Slot-B1" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-B2" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-B3" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-B4" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-B5" onclick="getIntoPlay(this.id)"></div>
+        </div>
+        <div class="Row" id="Bottom-Center-Row">
+            <div class="Slot" id="Slot-C1" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-C2" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-C3" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-C4" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-C5" onclick="getIntoPlay(this.id)"></div>
+        </div>
+        <div class="Row" id="Bottom-Row">
+            <div class="Slot" id="Slot-D1" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-D2" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-D3" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-D4" onclick="getIntoPlay(this.id)"></div>
+            <div class="Slot" id="Slot-D5" onclick="getIntoPlay(this.id)"></div>
+        </div>
+    </div>
+
+    <div id="Stacks">
+        <div id="Discard"></div>
+
+        <div id="Deck" onclick="drawCards(1)">
+            <div id="Inner"></div>
+        </div>
+    </div>
+
+    <script src="gameplay.js"></script>
+
+</body>
+
+</html>

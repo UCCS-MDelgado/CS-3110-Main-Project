@@ -1,0 +1,139 @@
+#Board {
+    width: 600px;
+    height: 400px;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 0;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.Row {
+    display: flex;
+    width: 550px;
+    height: 80px;
+    padding: 1px;
+    margin: 12px auto;
+}
+
+.Slot {
+    width: 80px;
+    height: 80px;
+    border: 2px solid black;
+    padding: 0px;
+    margin: 2px auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+#Hand {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+}
+
+.Playing-Card {
+    flex: 1;
+    border: 2px solid black;
+    text-align: center;
+    height: 140px;
+    width: 100px;
+    margin: .5em;
+}
+
+.Playing-Card:hover {
+    margin-top: -2%;
+}
+
+.Card-Value {
+    border: 2px solid black;
+    text-align: center;
+}
+
+.Card-Effect {
+    font-size: 0.8em;
+}
+
+#Stacks {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+#Discard {
+    border: 2px solid black;
+    text-align: center;
+    height: 140px;
+    width: 100px;
+    margin: .5em;
+}
+
+#Deck {
+    border: 2px solid black;
+    text-align: center;
+    height: 140px;
+    width: 100px;
+    margin: .5em;
+}
+
+#Inner {
+    background: #6ebcd6;
+
+    text-align: center;
+
+    height: 120px;
+    width: 80px;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#Num {
+    border-radius: 30%;
+    background: #e5ddddd2;
+
+    height: 20px;
+    width: 30px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+#Overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+#Game-Over-Screen{
+    font-size: 500%;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 500px;
+    height: 100px;
+}
