@@ -69,7 +69,6 @@ function validSlots(num) {
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 5; j++) {
             if (playField[i][j] != '') {
-                console.log(playField[i][j])
                 validSlotArray.push(validMoves(num, i, j))
             }
         }
@@ -79,14 +78,12 @@ function validSlots(num) {
     let tempArray = []
 
     for (let i = 0; i < validSlotArrayLen; i++) {
-        if (document.getElementById(validSlotArray[i]).innerHTML.trim() == ""){
+        if (document.getElementById(validSlotArray[i]).innerHTML.trim() == "") {
             tempArray.push(validSlotArray[i])
         }
     }
 
     validSlotArray = tempArray
-
-    console.log(validSlotArray)
 
     return validSlotArray
 }
@@ -100,7 +97,7 @@ function highlightValid(num) {
         for (let i = 0; i < validArrayLen; i++) {
             for (let j = 0; j < eleIdLen; j++) {
                 if (validArray[i] == eleId[j]) {
-                    document.getElementById(ele[j].id).style.backgroundColor = 'rgba(98, 236, 248, 0.5)'
+                    document.getElementById(ele[j].id).style.backgroundColor = 'rgba(96, 244, 132, 0.5)'
                     cardType = num
                 }
             }
@@ -113,9 +110,13 @@ function noHighlight() {
     let whiteoutLen = whiteout.length
 
     if (setPlay == false) {
-
         for (let i = 0; i < whiteoutLen; i++) {
-            whiteout[i].style.backgroundColor = "white"
+            if (whiteout[i].innerText == '') {
+                whiteout[i].style.backgroundColor = "white"
+            }
+            else {
+                whiteout[i].style.backgroundColor = 'rgba(243, 84, 84, 0.5)'
+            }
         }
     }
 }
@@ -136,11 +137,11 @@ function getIntoPlay(board_id) {
     for (let i = 0; i < validArrayLen; i++) {
         if (validArray[i] == board_id) {
             slotPlace = board_id
+
             if (setPlay) {
-                document.getElementById(board_id).innerHTML = cardType
+                document.getElementById(board_id).innerText = cardType
 
                 let effect = document.getElementById(cardType).getElementsByClassName("Card-Effect")[0].innerHTML
-                console.log(effect)
 
                 discardFromPlay(handArray, cardType)
 
@@ -161,6 +162,14 @@ function getIntoPlay(board_id) {
                 noHighlight()
 
                 activateEffect(effect)
+
+                document.getElementById(board_id).style.backgroundColor = 'rgba(243, 84, 84, 0.5)'
+
+                if (playField[0][4] != '') {
+                    highlightValid(0)
+                }
+
+                drawCards(1)
             }
         }
     }

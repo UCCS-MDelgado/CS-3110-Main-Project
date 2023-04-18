@@ -17,6 +17,87 @@ function trackDeckSize() {
     return deckArray.length
 }
 
+function previewCards() {
+    document.getElementById("Preview").style.display = "block"
+
+    viewPreview(0, discardArray)
+}
+
+function confirmPreview() {
+    document.getElementById("Preview").style.display = "none"
+
+    previewIndex = 0
+}
+
+function viewPreview(index, arr) {
+    let arrayLen = arr.length
+    let effectArrayLen = effectArray.length
+
+    document.getElementById('Leftward').style.display = "block"
+    document.getElementById('Rightward').style.display = "block"
+
+    let cardToMatch = arr[index]
+
+    for (let i = 0; i < effectArrayLen; i++) {
+        if (cardToMatch == effectArray[i][0]) {
+            const newCard = document.createElement("div");
+            newCard.className = "Playing-Card"
+            newCard.id = cardToMatch
+
+            const trim = document.createElement("div");
+            trim.className = "Trim"
+            const content = document.createElement("div");
+            content.className = "Content"
+
+            newCard.appendChild(trim)
+            trim.appendChild(content)
+
+            const cardValue = document.createElement("div");
+            cardValue.className = "Card-Value"
+            const cardEffect = document.createElement("div")
+            cardEffect.className = "Card-Effect"
+
+            cardValue.innerHTML = cardToMatch
+
+            for (let i = 0; i < DECK_SIZE; i++) {
+                if ((effectArray[i][0] == cardToMatch) && (effectArray[i][2])) {
+                    cardEffect.innerHTML = effectArray[i][1]
+                }
+            }
+
+            content.appendChild(cardValue)
+            content.appendChild(cardEffect)
+
+            document.getElementById('Card-View').innerHTML = newCard.innerHTML
+        }
+    }
+
+    if (arrayLen <= 1) {
+        document.getElementById('Leftward').style.display = "none"
+        document.getElementById('Rightward').style.display = "none"
+
+        return
+    }
+
+    if (index == 0) {
+        document.getElementById('Leftward').style.display = "none"
+
+        return
+    }
+
+    if (index == arrayLen - 1) {
+        document.getElementById('Rightward').style.display = "none"
+
+        return
+    }
+}
+
+function scrollPreview(num) {
+    previewIndex += num
+
+    viewPreview(previewIndex, discardArray)
+}
+
 function checkIfEnoughCards(num) {
     let amount = deckArray.length
 
@@ -107,7 +188,7 @@ function discardToDeck(num) {
 }
 
 function addEffect(array) {
-    for (let i = 0; i < DECK_SIZE; i++) {
+    for (let i = 1; i <= DECK_SIZE; i++) {
         let effect = effectText[Math.floor(Math.random() * effectText.length)]
 
         if (Math.floor(Math.random() * 2) == 0) {

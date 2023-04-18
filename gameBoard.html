@@ -19,6 +19,20 @@
         <button onclick="document.location='index.html'">Back to Home Page</button>
     </div>
 
+    <div id="Preview">
+        <div id="Scroller">
+            <button id="Leftward" onclick="scrollPreview(-1)">&larr;</button>
+
+            <div id="Card-View"></div>
+
+            <button id="Rightward" onclick="scrollPreview(1)">&rarr;</button>
+        </div>
+
+        <div id="Confirmation">
+            <button type="button" onclick="confirmPreview()">Confirm</button>
+        </div>
+    </div>
+
     <div id="Opponent">
         <div id="Opponent_Deck" onclick="drawCards(1)">
             <div id="Opponent_Inner"></div>
@@ -61,9 +75,9 @@
     </div>
 
     <div id="Stacks">
-        <div id="Discard"></div>
+        <div id="Discard" onclick="previewCards()"></div>
 
-        <div id="Deck" onclick="drawCards(1)">
+        <div id="Deck">
             <div id="Inner"></div>
         </div>
     </div>

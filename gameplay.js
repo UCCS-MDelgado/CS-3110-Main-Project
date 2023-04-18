@@ -5,6 +5,10 @@ let deckArray = [], handArray = [], discardArray = [], playField = [], effectArr
 
 let nums = []
 
+let previewIndex = 0
+
+let htmlArrays = []
+
 for (let i = 1; i <= DECK_SIZE; i++) {
     nums.push(i)
 }
