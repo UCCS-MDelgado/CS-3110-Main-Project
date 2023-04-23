@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Index Page</title>
+
+    <style>
+        #Title {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #Game {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #Rules {
+            position: absolute;
+            margin: 8px;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+    </script>
+</head>
+
+<body>
+    <h1 id="Title">Title Page</h1>
+    <button onclick="location.href='gameBoard.html';" class="Button" id="Game">Go to Game</button>
+    <button onclick="location.href='rules.html';" class="Button" id="Rules">Go to Rules Page</button>
+</body>
+
+</html>
