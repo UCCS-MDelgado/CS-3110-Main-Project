@@ -17,7 +17,7 @@ function trackDeckSize() {
     return deckArray.length
 }
 
-function previewCards() {
+function previewDiscard() {
     document.getElementById("Preview").style.display = "block"
 
     viewPreview(0, discardArray)
@@ -100,18 +100,25 @@ function scrollPreview(num) {
 
 function checkIfEnoughCards(num) {
     let amount = deckArray.length
+    let cardsLeft = 0
+    let handNum = handArray.length
 
     if (amount == 0) {
         document.getElementById("Overlay").style.display = "block";
     }
 
     if (amount >= num) {
-        return num
+        cardsLeft = num
     }
     else {
-        let cardsLeft = num - (num - amount)
-        return cardsLeft
+        cardsLeft = num - (num - amount)
     }
+
+    if (handNum + cardsLeft > 7) {
+        cardsLeft = 7 - handNum;
+    }
+
+    return cardsLeft
 }
 
 function drawCards(cardNum) {

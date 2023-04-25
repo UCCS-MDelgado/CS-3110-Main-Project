@@ -6,13 +6,76 @@ let setPlay = false
 let validArray = []
 let color = 'salmon'
 
+let discardHTML = 0
+
+let winner = ''
+
+function swapInnerHTML(element1, element2) {
+    let temp = element1.innerHTML;
+    element1.innerHTML = element2.innerHTML;
+    element2.innerHTML = temp;
+}
+
 function toggleColor() {
     if (color === 'salmon') {
         color = 'lightblue'
+        deckArray = p2Deck
+        handArray = p2Hand
+
+        p1Discard = discardArray
+        discardArray = p2Discard
+
+        winner = "BLUE"
     } else {
         color = 'salmon'
+        deckArray = p1Deck
+        handArray = p1Hand
+
+        p2Discard = discardArray
+        discardArray = p1Discard
+
+        winner = "RED"
+    }
+
+    let discard1 = document.getElementById("Discard");
+    let discard2 = document.getElementById("Opponent_Discard");
+
+    swapInnerHTML(discard1, discard2)
+}
+
+function swapMatrix(matrix) {
+    const numRows = matrix.length;
+    const numCols = matrix[0].length;
+    const transformedMatrix = [];
+
+    for (let i = numRows - 1; i >= 0; i--) {
+        const row = [];
+        for (let j = numCols - 1; j >= 0; j--) {
+            row.push(matrix[i][j]);
+        }
+        transformedMatrix.push(row);
+    }
+
+    return transformedMatrix;
+}
+
+function updateBoard(matrix1, matrix2) {
+    const rows = document.querySelectorAll('.Row');
+    for (let i = 0; i < rows.length; i++) {
+        const slots = rows[i].querySelectorAll('.Slot');
+        for (let j = 0; j < slots.length; j++) {
+            slots[j].innerHTML = matrix1[i][j];
+            if (matrix2[i][j] === 'salmon') {
+                slots[j].style.backgroundColor = 'salmon';
+            } else if (matrix2[i][j] === 'lightblue') {
+                slots[j].style.backgroundColor = 'lightblue';
+            } else {
+                slots[j].style.backgroundColor = 'white';
+            }
+        }
     }
 }
+
 
 function findIndex(board_id) {
     let idIndexLen = idIndex.length
@@ -41,16 +104,12 @@ function validMoves(num, row, col) {
             if (num > tileNum) {
                 tileIndex = slots[row][col + 1]
             }
-
-            return tileIndex
         }
     }
 
     if ((col + 1) > 4) {
         if (num < tileNum) {
             tileIndex = slots[row - 1][col]
-
-            return tileIndex
         }
     }
 
@@ -77,7 +136,7 @@ function validSlots(num) {
 
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 5; j++) {
-            if (playField[i][j] != '') {
+            if (playFieldColors[i][j] == color) {
                 validSlotArray.push(validMoves(num, i, j))
             }
         }
@@ -87,7 +146,7 @@ function validSlots(num) {
     let tempArray = []
 
     for (let i = 0; i < validSlotArrayLen; i++) {
-        if (document.getElementById(validSlotArray[i]).innerHTML.trim() == "") {
+        if (document.getElementById(validSlotArray[i]).style.backgroundColor != color) {
             tempArray.push(validSlotArray[i])
         }
     }
@@ -124,7 +183,12 @@ function noHighlight() {
                 whiteout[i].style.backgroundColor = "white"
             }
             else {
-                // do nothing
+                for (let j = 0; j < 4; j++) {
+                    for (let k = 0; k < 5; k++) {
+                        document.getElementById(idIndex[j][k]).style.backgroundColor = playFieldColors[j][k]
+                    }
+                }
+
             }
         }
     }
@@ -175,16 +239,37 @@ function getIntoPlay(board_id) {
                     playFieldColors[row][col] = 'lightblue'
                 }
 
+                playField = swapMatrix(playField)
+                playFieldColors = swapMatrix(playFieldColors)
+
+                updateBoard(playField, playFieldColors)
+
                 setPlay = false
                 noHighlight()
+
+                if (playFieldColors[3][0] == playFieldColors[0][4]) {
+                    document.getElementById("Overlay").style.display = "block";
+                    document.getElementById("Game-Over-Screen").innerHTML = winner + " WINS!"
+                }
 
                 activateEffect(effect)
 
                 toggleColor()
 
-                if (playField[0][4] != '') {
+                for (let i = 0; i < handArray.length; i++){
+                    let slotsValid = []
+                    slotsValid.push(validSlots(handArray[i]))
+                    
+                    if (slotsValid. length == 0){
+                        console.log("No valid moves")
+                    }
+                }
+
+                if (playFieldColors[0][4] == color) {
                     highlightValid(0)
                 }
+
+                drawCards(1)
             }
         }
     }
